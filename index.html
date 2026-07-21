@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jonel Laurel — Zoho CRM Consultant &amp; Administrator</title>
+<meta name="description" content="Zoho CRM implementation, automation, and administration portfolio — Jonel Laurel." />
+<style>
+  :root{
+    --navy:#1F3864;
+    --navy-dark:#152947;
+    --accent:#3E7CB1;
+    --bg:#FAFAFA;
+    --card:#FFFFFF;
+    --text:#2A2E35;
+    --muted:#6B7280;
+    --border:#E5E7EB;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  a{color:var(--accent);}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:#fff;
+    padding:88px 0 72px;
+  }
+  header.hero .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:13px;
+    color:#9FB6D8;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  header.hero h1{
+    font-size:44px;
+    margin:0 0 14px;
+    font-weight:700;
+    line-height:1.15;
+  }
+  header.hero p.lead{
+    font-size:19px;
+    color:#D6E0EF;
+    max-width:640px;
+    margin:0 0 30px;
+  }
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:#fff;color:var(--navy);}
+  .btn-secondary{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.35);}
+
+  nav.subnav{
+    position:sticky;top:0;z-index:10;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+  }
+  nav.subnav .wrap{
+    display:flex;gap:28px;padding:14px 24px;overflow-x:auto;
+  }
+  nav.subnav a{
+    color:var(--text);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    white-space:nowrap;
+    opacity:.7;
+  }
+  nav.subnav a:hover{opacity:1;color:var(--navy);}
+
+  section{padding:64px 0;}
+  section.alt{background:#F1F4F8;}
+  h2.section-title{
+    font-size:28px;
+    margin:0 0 8px;
+    color:var(--navy);
+  }
+  p.section-sub{
+    color:var(--muted);
+    margin:0 0 36px;
+    font-size:16px;
+    max-width:680px;
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-top:40px;
+  }
+  .stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 18px;
+    text-align:center;
+  }
+  .stat .num{font-size:30px;font-weight:700;color:var(--navy);}
+  .stat .label{font-size:13px;color:var(--muted);margin-top:4px;}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+  .card h3{margin:0 0 10px;font-size:17px;color:var(--navy);}
+  .card p{margin:0;color:var(--muted);font-size:14.5px;}
+
+  .skill-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .pill{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:13.5px;
+    color:var(--navy);
+    font-weight:600;
+  }
+
+  .case-study{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:32px;
+    margin-bottom:28px;
+  }
+  .case-study h3{color:var(--navy);font-size:20px;margin-top:0;}
+  .case-study .flow{
+    font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+    font-size:13.5px;
+    background:#F1F4F8;
+    border-radius:8px;
+    padding:14px 16px;
+    color:var(--navy-dark);
+    margin:16px 0;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  table.mini{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0;
+    font-size:14px;
+  }
+  table.mini th, table.mini td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--border);
+  }
+  table.mini th{
+    background:var(--navy);
+    color:#fff;
+    font-weight:600;
+  }
+  table.mini tr:nth-child(even) td{background:#F9FAFB;}
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:24px;
+  }
+  figure{margin:0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  figure img{display:block;width:100%;height:auto;border-bottom:1px solid var(--border);}
+  figcaption{padding:12px 14px;font-size:13px;color:var(--muted);}
+
+  footer{
+    background:var(--navy-dark);
+    color:#C9D5E6;
+    padding:40px 0;
+    text-align:center;
+    font-size:14px;
+  }
+  footer a{color:#fff;}
+
+  @media (max-width: 820px){
+    header.hero h1{font-size:32px;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .card-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Zoho CRM Consultant</div>
+    <h1>Jonel Laurel</h1>
+    <p class="lead">I design, build, and administer Zoho CRM implementations end to end — custom modules, Blueprints, Workflow Rules, Deluge automation, and chat-ops integrations that run in production for multi-department organizations.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#case-study">View Case Study</a>
+      <a class="btn btn-secondary" href="mailto:jdglaurel@gmail.com">Get In Touch</a>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav">
+  <div class="wrap">
+    <a href="#overview">Overview</a>
+    <a href="#skills">Skills</a>
+    <a href="#pipeline">Sales &amp; Financial Modules</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="overview">
+  <div class="wrap">
+    <h2 class="section-title">Engagement Overview</h2>
+    <p class="section-sub">Live architecture and automation audit of a real, production Zoho CRM Enterprise org (EESI Material and Controls Corp — EMCC), covering every module, workflow, and integration.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">187</div><div class="label">Total Modules</div></div>
+      <div class="stat"><div class="num">49</div><div class="label">Custom Modules</div></div>
+      <div class="stat"><div class="num">36</div><div class="label">Active Deluge Functions</div></div>
+      <div class="stat"><div class="num">~70</div><div class="label">Subforms</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="alt">
+  <div class="wrap">
+    <h2 class="section-title">What I Do</h2>
+    <p class="section-sub">End-to-end Zoho CRM implementation and administration — not just pipeline configuration, but procurement, field service, finance, HR, IT asset management, and QA/safety modeled inside one CRM.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Custom Module &amp; Subform Design</h3>
+        <p>Structured, repeatable data capture across departments — 49 custom modules and ~70 subforms built for real operational data, not just form fields.</p>
+      </div>
+      <div class="card">
+        <h3>Blueprint-Driven Processes</h3>
+        <p>Stage-gated business processes across sales, procurement, service, and finance objects, with entry criteria, transitions, and common-transition patterns.</p>
+      </div>
+      <div class="card">
+        <h3>Deluge Custom Functions</h3>
+        <p>Reference numbering, cross-module automation, calendar integration, and data-hygiene functions running in production — 36 active in this org alone.</p>
+      </div>
+      <div class="card">
+        <h3>Workflow Rule Automation</h3>
+        <p>Field updates, email notifications, function calls, and real-time Zoho Cliq chat notifications combined into one coherent approval pipeline.</p>
+      </div>
+      <div class="card">
+        <h3>Chat-Ops Integration</h3>
+        <p>Zoho Cliq notifications wired into Workflow Rules so approvers get a fully-populated approval card the moment a request reaches their stage.</p>
+      </div>
+      <div class="card">
+        <h3>Role-Based Security</h3>
+        <p>Profile and role hierarchy design aligned to a real organizational structure spanning multiple regional offices.</p>
+      </div>
+    </div>
+    <div class="skill-pills">
+      <span class="pill">Zoho CRM Enterprise</span>
+      <span class="pill">Blueprint</span>
+      <span class="pill">Workflow Rules</span>
+      <span class="pill">Deluge Scripting</span>
+      <span class="pill">Zoho Cliq</span>
+      <span class="pill">Zoho Calendar API</span>
+      <span class="pill">Approval Processes</span>
+      <span class="pill">Custom Functions</span>
+      <span class="pill">Role &amp; Profile Security</span>
+      <span class="pill">Zoho FSM</span>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="wrap">
+    <h2 class="section-title">Sales &amp; Financial Modules</h2>
+    <p class="section-sub">Beyond field service and operations, the same org runs its full quote-to-cash pipeline in CRM — from opportunity through order intake, invoicing, and reporting — all reviewed directly via the Zoho CRM metadata API.</p>
+
+    <div class="case-study">
+      <h3>Opportunities (Deals)</h3>
+      <p><strong>96 active fields (74 custom), 2 subforms — Standard layout.</strong> A full quotation/bid pipeline rather than a generic sales stage tracker — stages include Receipt of Inquiry, Pre-Bid Survey, Technical Proposal Submission, Commercial Proposal Submission, and Solution Design, plus scope, product group/sub-group codes, quotation type, revision numbers, Incoterms, and payment terms.</p>
+    </div>
+
+    <div class="case-study">
+      <h3>Order Intake</h3>
+      <p><strong>68 active fields (54 custom), 2 subforms — "Order Intake 2026" layout, the current active layout (last updated May 2026).</strong> Custom module that picks up a won opportunity and tracks it as a confirmed order — customer PO number, PO received/acknowledged dates, target delivery, and gross profit calculated per business unit (FDG, PMFC, ECC/Sales, PAS, MCCP), with sales-credit-split fields for multi-team commission attribution.</p>
+    </div>
+
+    <div class="case-study">
+      <h3>Sales Invoice</h3>
+      <p><strong>38 active fields (24 custom), 1 subform — Standard layout.</strong> Custom module covering the invoicing lifecycle — Invoice Date/Due Date, TIN, Tax Code, VAT (12%), Aging, Date Collected, and an "Invoice Information" subform lookup — giving finance a single source of truth from PO to collection.</p>
+    </div>
+
+    <div class="case-study">
+      <h3>Analytics</h3>
+      <p>Native Zoho Analytics/Dashboards layer built on top of the Opportunities → Order Intake → Sales Invoice chain, giving management rollup visibility (pipeline value, order GP by business unit, invoice aging) without needing a separate BI tool.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ticketing" class="alt">
+  <div class="wrap">
+    <h2 class="section-title">Ticketing System</h2>
+    <p class="section-sub">A dedicated custom "Ticketing System" module — a real internal helpdesk, not a repurposed Cases module — running two parallel service tracks under one intake form.</p>
+
+    <div class="case-study">
+      <h3>Dual-track service desk</h3>
+      <p><strong>77 active fields (64 custom), 1 subform — Standard layout.</strong> Every ticket is classified by Ticket Classification (ECC – Service Request, ECC – Quotation Request, or MIS Technical Support) and then routed down one of two independent stage pipelines:</p>
+      <table class="mini">
+        <tr><th>Track</th><th>Stage flow</th></tr>
+        <tr><td>ECC Stage</td><td>Open → Start and Evaluate → Service Request Accepted / Preparing Quotation → Assessment On-going / For Customer Acknowledged → Customer Acceptance → Closed (Service Completed / Quotation Submitted / Request Cancelled)</td></tr>
+        <tr><td>MIS Stage</td><td>Open → Review Service/Asset Request → Servicing On-going / Processing PR / Processing PO → Acknowledging Service Report / Preparing New Asset → Closed (Resolved / Asset Issued / Cancelled)</td></tr>
+      </table>
+    </div>
+
+    <div class="case-study">
+      <h3>Routing &amp; accountability fields</h3>
+      <p>Requestor Type (Sales Engineer / Customer / Employee), Requestor Region (HQ / Visayas / Mindanao), Business Unit (Field Devices, Control Products, Analytical &amp; Safety, Direct Inquiry), Warranty Status, and Service Level (Basic / Moderate / Complex) drive routing, while Ticket Controller, Assigned Engineer, Recommended Service Engineer, and Reviewed By fields keep ownership and escalation traceable end to end. A post-resolution Rating field (Excellent / Good / Bad) closes the loop with customer feedback.</p>
+    </div>
+  </div>
+</section>
+
+<section id="case-study">
+  <div class="wrap">
+    <h2 class="section-title">Case Study — Trip Ticket Module</h2>
+    <p class="section-sub">A single custom module (company vehicle/driver dispatch requests) combining a Blueprint, four Workflow Rules, a custom Deluge function, and a chat-ops integration into one coherent approval process — audited directly in CRM Setup.</p>
+
+    <div class="case-study">
+      <h3>1. Blueprint "E-Trip Ticket"</h3>
+      <p>Stage-gated flow with entry criteria and side paths for rejection/cancellation:</p>
+      <div class="flow">Trip Ticket Created → (Submit Trip Ticket) → Admin Approval for Vehicle Booking → (Booking Approve) → Trip Booked</div>
+      <p style="color:var(--muted);font-size:14px;">Booking Dissapprove / Resubmit Ticket / Cancel Booking route back out. Every transition was opened and inspected directly, including two Common Transitions (Cancel Booking, Exit Process) reachable from multiple states.</p>
+    </div>
+
+    <div class="case-study">
+      <h3>2. Workflow Rules (4 total, all audited)</h3>
+      <table class="mini">
+        <tr><th>Rule</th><th>Trigger / Condition</th><th>Action</th></tr>
+        <tr><td>Stage Restriction</td><td>Stage IS "Trip Ticket Created"</td><td>Field Update — Stage Value</td></tr>
+        <tr><td>Automatic Date Approved</td><td>Stage IS "Trip Booked" / "Trip Ticket Created"</td><td>Field Update — stamps Date Approved / Date Requested</td></tr>
+        <tr><td>NOTIFICATION TRIPTICKET</td><td>Stage IS "Admin Approval for Vehicle Booking" AND Purposes doesn't contain "Personal"</td><td>Zoho Cliq Notification to #ZOHO-CRM TRIP TICKET APPROVALS — posts a fully formatted approval card</td></tr>
+        <tr><td>Auto Create Calendar Event on Trip Booked</td><td>Stage IS "Trip Booked"</td><td>Calls the Deluge function "Create Trip Calendar Event" — auto-creates a Zoho Calendar event</td></tr>
+      </table>
+    </div>
+
+    <div class="case-study">
+      <h3>3. Chat-Ops: Zoho Cliq Integration</h3>
+      <p>The moment a request reaches "Admin Approval for Vehicle Booking," approvers get a fully-populated approval card — requestor, purpose, travel dates, vehicle, driver, passengers, destination, ticket no., and cost fields — posted directly to a dedicated Cliq channel, without needing to open the CRM record first.</p>
+    </div>
+
+    <div class="case-study">
+      <h3>4. Auto-Calendar Event on Approval</h3>
+      <p>The instant Stage flips to "Trip Booked," a Workflow Rule calls the "Create Trip Calendar Event" Deluge function, which reads the ticket's travel dates, destination, vehicle, and driver/passenger fields and creates a matching Zoho Calendar event automatically — closing the loop end-to-end: <em>submit → approve → notify in Cliq → auto-schedule on the calendar</em>, all off one Stage field, with zero duplicate data entry.</p>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots" class="alt">
+  <div class="wrap">
+    <h2 class="section-title">Screenshots — Captured Live from CRM Setup</h2>
+    <p class="section-sub">Verified directly in Zoho CRM Setup, not just reconstructed from API metadata. Personal names have been redacted for privacy.</p>
+    <div class="gallery">
+      <figure>
+        <img src="img/01_blueprint_etripticket.jpg" alt="Blueprint canvas for E-Trip Ticket" loading="lazy" />
+        <figcaption>Fig. 1 — Blueprint canvas for "E-Trip Ticket" showing the stage-gated approval flow.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/02_workflow_rules_list.jpg" alt="Workflow Rules list filtered to Trip Tickets" loading="lazy" />
+        <figcaption>Fig. 2 — Workflow Rules list filtered to the Trip Tickets module.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/04_cliq_notification_action.jpg" alt="Zoho Cliq Notification instant action" loading="lazy" />
+        <figcaption>Fig. 3 — The rule's Instant Action: a Zoho Cliq Notification to the approvals channel.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/07_calendar_rule_function.jpg" alt="Function call to Create Trip Calendar Event" loading="lazy" />
+        <figcaption>Fig. 4 — Instant Action: Function call to the custom Deluge function "Create Trip Calendar Event".</figcaption>
+      </figure>
+      <figure>
+        <img src="img/08_calendar_event_created.jpg" alt="Auto-created event in Zoho Calendar" loading="lazy" />
+        <figcaption>Fig. 5 — The resulting auto-created event in Zoho Calendar (names redacted).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/03_workflow_condition.jpg" alt="Workflow rule condition detail" loading="lazy" />
+        <figcaption>Fig. 6 — Rule condition detail for the Cliq notification trigger.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap" style="text-align:center;">
+    <h2 class="section-title" style="text-align:center;">Let's Talk About Your Zoho CRM</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">Available for Zoho CRM implementation, automation audits, Blueprint/Workflow design, and Deluge development.</p>
+    <a class="btn" style="background:var(--navy);color:#fff;" href="mailto:jdglaurel@gmail.com">jdglaurel@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Jonel Laurel. Case study based on a live Zoho CRM Enterprise implementation for EESI Material and Controls Corp (EMCC).</p>
+  </div>
+</footer>
+
+</body>
+</html>
