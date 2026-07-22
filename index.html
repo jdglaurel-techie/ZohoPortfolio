@@ -7,14 +7,14 @@
 <meta name="description" content="Zoho CRM implementation, automation, and administration portfolio — Jonel Laurel." />
 <style>
   :root{
-    --navy:#1F3864;
-    --navy-dark:#152947;
-    --accent:#3E7CB1;
-    --bg:#FAFAFA;
-    --card:#FFFFFF;
-    --text:#2A2E35;
-    --muted:#6B7280;
-    --border:#E5E7EB;
+    --navy:#0D0E14;
+    --navy-dark:#08090D;
+    --accent:#FF6D28;
+    --bg:#0B0C12;
+    --card:#15161F;
+    --text:#EDEDF2;
+    --muted:#8B8D9A;
+    --border:#25262F;
     --radius:10px;
   }
   *{box-sizing:border-box;}
@@ -30,15 +30,16 @@
   .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
 
   header.hero{
-    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);
+    background:radial-gradient(circle at 20% 0%, #1A1C29 0%, var(--navy-dark) 60%);
     color:#fff;
     padding:88px 0 72px;
+    border-bottom:1px solid var(--border);
   }
   header.hero .eyebrow{
     text-transform:uppercase;
     letter-spacing:.12em;
     font-size:13px;
-    color:#9FB6D8;
+    color:var(--accent);
     margin-bottom:14px;
     font-weight:600;
   }
@@ -65,12 +66,12 @@
     transition:transform .15s ease, opacity .15s ease;
   }
   .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:#fff;color:var(--navy);}
-  .btn-secondary{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.35);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.18);}
 
   nav.subnav{
     position:sticky;top:0;z-index:10;
-    background:#fff;
+    background:var(--navy-dark);
     border-bottom:1px solid var(--border);
   }
   nav.subnav .wrap{
@@ -82,16 +83,16 @@
     font-size:14px;
     font-weight:600;
     white-space:nowrap;
-    opacity:.7;
+    opacity:.6;
   }
-  nav.subnav a:hover{opacity:1;color:var(--navy);}
+  nav.subnav a:hover{opacity:1;color:var(--accent);}
 
   section{padding:64px 0;}
-  section.alt{background:#F1F4F8;}
+  section.alt{background:#0E0F17;}
   h2.section-title{
     font-size:28px;
     margin:0 0 8px;
-    color:var(--navy);
+    color:#fff;
   }
   p.section-sub{
     color:var(--muted);
@@ -113,7 +114,7 @@
     padding:22px 18px;
     text-align:center;
   }
-  .stat .num{font-size:30px;font-weight:700;color:var(--navy);}
+  .stat .num{font-size:30px;font-weight:700;color:var(--accent);}
   .stat .label{font-size:13px;color:var(--muted);margin-top:4px;}
 
   .card-grid{
@@ -126,18 +127,30 @@
     border:1px solid var(--border);
     border-radius:var(--radius);
     padding:24px;
+    transition:border-color .15s ease;
   }
-  .card h3{margin:0 0 10px;font-size:17px;color:var(--navy);}
+  .card:hover{border-color:var(--accent);}
+  .card h3{margin:0 0 10px;font-size:17px;color:#fff;}
   .card p{margin:0;color:var(--muted);font-size:14.5px;}
+
+  .icon-badge{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--navy-dark);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;
+    margin-bottom:14px;
+  }
 
   .skill-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
   .pill{
-    background:#fff;
+    background:var(--card);
     border:1px solid var(--border);
     border-radius:999px;
     padding:8px 16px;
     font-size:13.5px;
-    color:var(--navy);
+    color:var(--text);
     font-weight:600;
   }
 
@@ -148,14 +161,15 @@
     padding:32px;
     margin-bottom:28px;
   }
-  .case-study h3{color:var(--navy);font-size:20px;margin-top:0;}
+  .case-study h3{color:var(--accent);font-size:20px;margin-top:0;}
   .case-study .flow{
     font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
     font-size:13.5px;
-    background:#F1F4F8;
+    background:var(--navy-dark);
+    border:1px solid var(--border);
     border-radius:8px;
     padding:14px 16px;
-    color:var(--navy-dark);
+    color:var(--text);
     margin:16px 0;
     overflow-x:auto;
     white-space:nowrap;
@@ -172,11 +186,12 @@
     border-bottom:1px solid var(--border);
   }
   table.mini th{
-    background:var(--navy);
-    color:#fff;
+    background:var(--navy-dark);
+    color:var(--accent);
     font-weight:600;
   }
-  table.mini tr:nth-child(even) td{background:#F9FAFB;}
+  table.mini tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  table.mini td{color:var(--muted);}
 
   .gallery{
     display:grid;
@@ -190,12 +205,13 @@
 
   footer{
     background:var(--navy-dark);
-    color:#C9D5E6;
+    color:var(--muted);
     padding:40px 0;
     text-align:center;
     font-size:14px;
+    border-top:1px solid var(--border);
   }
-  footer a{color:#fff;}
+  footer a{color:var(--accent);}
 
   @media (max-width: 820px){
     header.hero h1{font-size:32px;}
@@ -233,7 +249,7 @@
 <section id="overview">
   <div class="wrap">
     <h2 class="section-title">Engagement Overview</h2>
-    <p class="section-sub">Live architecture and automation audit of a real, production Zoho CRM Enterprise org (EESI Material and Controls Corp — EMCC), covering every module, workflow, and integration.</p>
+    <p class="section-sub">Live architecture and automation audit of a real, production Zoho CRM Enterprise org for a manufacturing company, covering every module, workflow, and integration.</p>
     <div class="stat-grid">
       <div class="stat"><div class="num">187</div><div class="label">Total Modules</div></div>
       <div class="stat"><div class="num">49</div><div class="label">Custom Modules</div></div>
@@ -249,41 +265,47 @@
     <p class="section-sub">End-to-end Zoho CRM implementation and administration — not just pipeline configuration, but procurement, field service, finance, HR, IT asset management, and QA/safety modeled inside one CRM.</p>
     <div class="card-grid">
       <div class="card">
+        <div class="icon-badge">🧩</div>
         <h3>Custom Module &amp; Subform Design</h3>
         <p>Structured, repeatable data capture across departments — 49 custom modules and ~70 subforms built for real operational data, not just form fields.</p>
       </div>
       <div class="card">
+        <div class="icon-badge">🗺️</div>
         <h3>Blueprint-Driven Processes</h3>
         <p>Stage-gated business processes across sales, procurement, service, and finance objects, with entry criteria, transitions, and common-transition patterns.</p>
       </div>
       <div class="card">
+        <div class="icon-badge">⚙️</div>
         <h3>Deluge Custom Functions</h3>
         <p>Reference numbering, cross-module automation, calendar integration, and data-hygiene functions running in production — 36 active in this org alone.</p>
       </div>
       <div class="card">
+        <div class="icon-badge">🔀</div>
         <h3>Workflow Rule Automation</h3>
         <p>Field updates, email notifications, function calls, and real-time Zoho Cliq chat notifications combined into one coherent approval pipeline.</p>
       </div>
       <div class="card">
+        <div class="icon-badge">💬</div>
         <h3>Chat-Ops Integration</h3>
         <p>Zoho Cliq notifications wired into Workflow Rules so approvers get a fully-populated approval card the moment a request reaches their stage.</p>
       </div>
       <div class="card">
+        <div class="icon-badge">🔒</div>
         <h3>Role-Based Security</h3>
         <p>Profile and role hierarchy design aligned to a real organizational structure spanning multiple regional offices.</p>
       </div>
     </div>
     <div class="skill-pills">
-      <span class="pill">Zoho CRM Enterprise</span>
-      <span class="pill">Blueprint</span>
-      <span class="pill">Workflow Rules</span>
-      <span class="pill">Deluge Scripting</span>
-      <span class="pill">Zoho Cliq</span>
-      <span class="pill">Zoho Calendar API</span>
-      <span class="pill">Approval Processes</span>
-      <span class="pill">Custom Functions</span>
-      <span class="pill">Role &amp; Profile Security</span>
-      <span class="pill">Zoho FSM</span>
+      <span class="pill">🟠 Zoho CRM Enterprise</span>
+      <span class="pill">🗺️ Blueprint</span>
+      <span class="pill">🔀 Workflow Rules</span>
+      <span class="pill">⚙️ Deluge Scripting</span>
+      <span class="pill">💬 Zoho Cliq</span>
+      <span class="pill">📅 Zoho Calendar API</span>
+      <span class="pill">✅ Approval Processes</span>
+      <span class="pill">🧩 Custom Functions</span>
+      <span class="pill">🔒 Role &amp; Profile Security</span>
+      <span class="pill">🛠️ Zoho FSM</span>
     </div>
   </div>
 </section>
@@ -378,27 +400,27 @@
     <p class="section-sub">Verified directly in Zoho CRM Setup, not just reconstructed from API metadata. Personal names have been redacted for privacy.</p>
     <div class="gallery">
       <figure>
-        <img src="01_blueprint_etripticket.jpg" alt="Blueprint canvas for E-Trip Ticket" loading="lazy" />
+        <img src="img/01_blueprint_etripticket.jpg" alt="Blueprint canvas for E-Trip Ticket" loading="lazy" />
         <figcaption>Fig. 1 — Blueprint canvas for "E-Trip Ticket" showing the stage-gated approval flow.</figcaption>
       </figure>
       <figure>
-        <img src="02_workflow_rules_list.jpg" alt="Workflow Rules list filtered to Trip Tickets" loading="lazy" />
+        <img src="img/02_workflow_rules_list.jpg" alt="Workflow Rules list filtered to Trip Tickets" loading="lazy" />
         <figcaption>Fig. 2 — Workflow Rules list filtered to the Trip Tickets module.</figcaption>
       </figure>
       <figure>
-        <img src="04_cliq_notification_action.jpg" alt="Zoho Cliq Notification instant action" loading="lazy" />
+        <img src="img/04_cliq_notification_action.jpg" alt="Zoho Cliq Notification instant action" loading="lazy" />
         <figcaption>Fig. 3 — The rule's Instant Action: a Zoho Cliq Notification to the approvals channel.</figcaption>
       </figure>
       <figure>
-        <img src="07_calendar_rule_function.jpg" alt="Function call to Create Trip Calendar Event" loading="lazy" />
+        <img src="img/07_calendar_rule_function.jpg" alt="Function call to Create Trip Calendar Event" loading="lazy" />
         <figcaption>Fig. 4 — Instant Action: Function call to the custom Deluge function "Create Trip Calendar Event".</figcaption>
       </figure>
       <figure>
-        <img src="08_calendar_event_created.jpg" alt="Auto-created event in Zoho Calendar" loading="lazy" />
+        <img src="img/08_calendar_event_created.jpg" alt="Auto-created event in Zoho Calendar" loading="lazy" />
         <figcaption>Fig. 5 — The resulting auto-created event in Zoho Calendar (names redacted).</figcaption>
       </figure>
       <figure>
-        <img src="03_workflow_condition.jpg" alt="Workflow rule condition detail" loading="lazy" />
+        <img src="img/03_workflow_condition.jpg" alt="Workflow rule condition detail" loading="lazy" />
         <figcaption>Fig. 6 — Rule condition detail for the Cliq notification trigger.</figcaption>
       </figure>
     </div>
@@ -409,13 +431,13 @@
   <div class="wrap" style="text-align:center;">
     <h2 class="section-title" style="text-align:center;">Let's Talk About Your Zoho CRM</h2>
     <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">Available for Zoho CRM implementation, automation audits, Blueprint/Workflow design, and Deluge development.</p>
-    <a class="btn" style="background:var(--navy);color:#fff;" href="mailto:jdglaurel@gmail.com">jdglaurel@gmail.com</a>
+    <a class="btn" style="background:var(--accent);color:#fff;" href="mailto:jdglaurel@gmail.com">jdglaurel@gmail.com</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Jonel Laurel. Case study based on a live Zoho CRM Enterprise implementation for EESI Material and Controls Corp (EMCC).</p>
+    <p>© 2026 Jonel Laurel. Case study based on a live Zoho CRM Enterprise implementation for a manufacturing company.</p>
   </div>
 </footer>
 
