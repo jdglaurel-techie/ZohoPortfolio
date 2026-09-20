@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jonel Laurel — Zoho CRM Developer &amp; IT Systems Specialist</title>
+<meta name="description" content="Portfolio of Jonel Laurel: Zoho CRM development and administration, Deluge automation, network and systems administration. Case studies with screenshots." />
+<style>
+
+  :root{
+    --zred:#E42527;--zblue:#226DB4;--zgreen:#089949;--zyellow:#F9B21D;
+    --bg:#F4F6FA;--bg2:#FFFFFF;--card:#FFFFFF;--text:#1E2A3B;--muted:#5B6778;--border:#E1E6EE;
+    --accent:var(--zred);--link:var(--zblue);--tint:#EAF2FB;--navy:#1B2A44;--radius:10px;
+    --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{margin:0;font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:var(--link)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  section.alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  h2{font-size:30px;margin:0 0 8px;color:var(--navy)}
+  h2:after{content:"";display:block;width:56px;height:4px;margin-top:10px;border-radius:2px;background:linear-gradient(90deg,var(--zred) 25%,var(--zgreen) 25% 50%,var(--zblue) 50% 75%,var(--zyellow) 75%)}
+  .sub{color:var(--muted);margin:14px 0 32px;max-width:700px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--zblue);font-weight:700;margin-bottom:10px}
+
+  /* four-color Zoho-style stripe */
+  .zoho-stripe{height:4px;background:linear-gradient(90deg,var(--zred) 25%,var(--zgreen) 25% 50%,var(--zblue) 50% 75%,var(--zyellow) 75%)}
+
+  /* top menu */
+  header.top{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 1px 0 var(--border)}
+  nav.menu .wrap{display:flex;align-items:center;gap:8px;height:58px}
+  .brand{font-weight:800;color:var(--navy);text-decoration:none;margin-right:auto;white-space:nowrap;font-size:18px}
+  .links{display:flex;gap:2px}
+  .links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:8px 12px;border-radius:6px;border-bottom:2px solid transparent}
+  .links a:hover{color:var(--zblue);background:var(--tint)}
+  .links a.active{color:var(--zblue);border-bottom-color:var(--zblue);border-radius:6px 6px 0 0}
+  .burger{display:none;background:#fff;border:1px solid var(--border);color:var(--navy);border-radius:6px;padding:6px 10px;font-size:18px;cursor:pointer}
+
+  /* hero */
+  #home{padding:72px 0 64px;background:linear-gradient(180deg,#E9F1FB 0%,var(--bg) 100%);border-bottom:1px solid var(--border)}
+  #home h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:0 0 14px;color:var(--navy)}
+  #home .lead{font-size:19px;color:var(--muted);max-width:660px;margin:0 0 28px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:11px 24px;border-radius:6px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:box-shadow .15s,background .15s}
+  .btn.p{background:var(--zred);color:#fff}
+  .btn.p:hover{background:#C81E20;box-shadow:0 4px 12px rgba(228,37,39,.3)}
+  .btn.s{background:#fff;color:var(--zblue);border-color:var(--zblue)}
+  .btn.s:hover{background:var(--tint)}
+  .herogrid{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:center}
+  .portrait{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;border-radius:16px;border:6px solid #fff;box-shadow:0 12px 40px rgba(27,42,68,.18)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+  .stat{background:#fff;border:1px solid var(--border);border-top:4px solid var(--zred);border-radius:var(--radius);padding:18px 14px;text-align:center;box-shadow:var(--shadow)}
+  .stat:nth-child(2){border-top-color:var(--zgreen)}
+  .stat:nth-child(3){border-top-color:var(--zblue)}
+  .stat:nth-child(4){border-top-color:var(--zyellow)}
+  .stat b{display:block;font-size:30px;color:var(--navy)}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .grid>.card{transition:transform .15s,box-shadow .15s,border-color .15s}
+  .grid>.card:hover{transform:translateY(-2px);border-color:#C6D6EA;box-shadow:0 8px 24px rgba(16,24,40,.1)}
+  .card h3{margin:0 0 8px;font-size:18px;color:var(--navy)}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:50% 12%;float:right;margin:0 0 8px 14px;border:3px solid var(--zblue)}
+  .icon{font-size:24px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:var(--tint);border-radius:10px;margin-bottom:12px}
+
+  /* skills */
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:#fff;border:1px solid var(--border);border-radius:6px;padding:6px 13px;font-size:14px;color:var(--navy);box-shadow:0 1px 1px rgba(16,24,40,.04)}
+  .chip:hover{border-color:var(--zblue);background:var(--tint)}
+  .skillgroup{margin-bottom:26px}
+  .skillgroup h3{font-size:13px;color:var(--zblue);text-transform:uppercase;letter-spacing:.09em;margin:0 0 10px}
+
+  /* projects */
+  .tabs{display:flex;gap:4px;margin-bottom:22px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+  .tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:-1px}
+  .tab:hover{color:var(--zblue)}
+  .tab.on{color:var(--zblue);border-bottom-color:var(--zblue)}
+  .proj{display:none}.proj.on{display:block}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--navy);font-weight:600;background:#F0F4FA}
+  .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px}
+  .tablewrap table{margin:0}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:20px}
+  figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  figure img{width:100%;height:170px;object-fit:cover;object-position:top;display:block;cursor:zoom-in;border-bottom:1px solid var(--border)}
+  figcaption{padding:10px 12px;font-size:13px;color:var(--muted)}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0;font-size:14px}
+  .flow span{background:var(--tint);border:1px solid #BBD3EE;color:var(--navy);padding:6px 14px;border-radius:6px;font-weight:600}
+  .flow span:last-child{background:#E6F5EC;border-color:#A8DBBE}
+  .flow i{color:var(--zblue);font-style:normal;font-weight:700}
+
+  /* timeline */
+  .tl{border-left:2px solid var(--border);margin-left:8px}
+  .tl div{position:relative;padding:0 0 26px 24px}
+  .tl div:before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--zblue);border:3px solid #fff;box-shadow:0 0 0 1px var(--zblue)}
+  .tl h3{margin:0;font-size:18px;color:var(--navy)}.tl small{color:var(--muted)}
+  .tl p{margin:6px 0 0;color:var(--muted)}
+
+  /* certs */
+  .cert{padding:0;overflow:hidden}
+  .cert img{width:100%;height:190px;object-fit:cover;display:block;cursor:zoom-in;background:#F0F4FA}
+  .cert div{padding:14px 16px}
+  .cert h3{font-size:16px;margin:0 0 4px}.cert p{font-size:13px}
+  .empty{border:2px dashed #C6D6EA;background:var(--tint);border-radius:var(--radius);padding:30px;text-align:center;color:var(--muted)}
+
+  /* lightbox */
+  #lb{position:fixed;inset:0;background:rgba(15,23,42,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;cursor:zoom-out;flex-direction:column;gap:12px}
+  #lb.open{display:flex}
+  #lb img{max-width:96vw;max-height:84vh;border-radius:8px;background:#fff}
+  #lb p{color:#E5E9F0;margin:0;font-size:14px;text-align:center}
+
+  #contact{background:var(--navy);color:#fff;border:0}
+  #contact h2{color:#fff}
+  #contact .sub{color:#C5CFDF}
+  footer{padding:24px 0;background:#132038;color:#A9B6CA;font-size:13px}
+
+  @media (max-width:820px){
+    .g3,.g2{grid-template-columns:1fr}
+    .herogrid{grid-template-columns:1fr;gap:28px}
+    .portrait{order:-1;max-width:240px;margin:0 auto}
+    #home{padding:48px 0 44px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .burger{display:block}
+    .links{display:none;position:absolute;top:58px;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--border);padding:10px 20px;box-shadow:0 8px 16px rgba(16,24,40,.08)}
+    .links.open{display:flex}
+    .links a.active{border-radius:6px;border-bottom-color:transparent;background:var(--tint)}
+    section{padding:52px 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="zoho-stripe"></div>
+<nav class="menu">
+  <div class="wrap">
+    <a class="brand" href="#home">Jonel Laurel</a>
+    <button class="burger" id="burger" aria-label="Toggle menu">☰</button>
+    <div class="links" id="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav></header>
+
+<header id="home">
+  <div class="wrap">
+    <div class="herogrid">
+      <div>
+        <div class="eyebrow">Zoho CRM Developer · IT Systems Specialist</div>
+        <h1>Jonel Laurel</h1>
+        <p class="lead">I turn manual business processes into automated Zoho CRM systems: custom modules, approval Blueprints, Deluge functions, and chat-ops integrations, running in production for a multi-department manufacturing company.</p>
+        <div class="btns">
+          <a class="btn p" href="#projects">View Projects</a>
+          <a class="btn s" href="#contact">Hire Me</a>
+        </div>
+      </div>
+      <img class="portrait" src="assets/img/profile.jpg" alt="Portrait of Jonel Laurel in a navy suit">
+    </div>
+    <div class="stats">
+      <div class="stat"><b>7+ years</b><span>IT experience</span></div>
+      <div class="stat"><b>187</b><span>CRM modules administered</span></div>
+      <div class="stat"><b>49</b><span>custom modules built</span></div>
+      <div class="stat"><b>36</b><span>active Deluge functions</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p class="sub">Responsive, detail-oriented, and used to running systems independently with minimal supervision.</p>
+    <div class="grid g2">
+      <div class="card">
+        <img class="avatar" src="assets/img/profile.jpg" alt="Jonel Laurel headshot">
+        <h3>Who I am</h3>
+        <p>I started in IT support handling helpdesk and network troubleshooting, then grew into running an entire company's IT operations end to end, from infrastructure planning to daily system administration, including time as IT Head/Supervisor. Today I own a live Zoho CRM Enterprise deployment for a manufacturing company.</p>
+      </div>
+      <div class="card">
+        <h3>Notable achievements</h3>
+        <p>🏆 The sole SaaS administrator and developer of the company's Zoho applications: I design, build, automate, secure and support them single-handedly.<br>
+        🏆 Solely migrated a small business from HostGator mail to Zoho Mail with zero downtime.<br>
+        🏆 Solely built a full small-business network: Fortigate firewall, Cisco switches, Active Directory, Hikvision surveillance, Avaya voice, Microsoft File Server.<br>
+        🏆 Established the MIS standard process now accredited under ISO 9001:2015.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <h2>Services</h2>
+    <p class="sub">What clients can hire me for.</p>
+    <div class="grid g3">
+      <div class="card"><div class="icon">🧩</div><h3>Zoho CRM Setup &amp; Customization</h3><p>Custom modules, subforms, layouts, field-level security and role hierarchy built around how your team really works.</p></div>
+      <div class="card"><div class="icon">🗺️</div><h3>Blueprint &amp; Workflow Automation</h3><p>Stage-gated approvals, field updates, email and Cliq notifications that turn multi-step manual approvals into one click.</p></div>
+      <div class="card"><div class="icon">⚙️</div><h3>Deluge Custom Functions</h3><p>Reference numbering, cross-module automation, calendar sync and data-hygiene logic.</p></div>
+      <div class="card"><div class="icon">📊</div><h3>Sales, Finance &amp; Reporting</h3><p>Opportunity → Order Intake → Sales Invoice pipeline with Zoho Analytics dashboards.</p></div>
+      <div class="card"><div class="icon">🟠</div><h3>Zoho One Setup with AI Automation</h3><p>Full Zoho One rollout (CRM, Campaigns, Flow, Cliq, Mail and more) connected and enhanced with AI automation from day one.</p></div>
+      <div class="card"><div class="icon">🤖</div><h3>AI Chatbot for CRM</h3><p>AI-powered chatbots and automation for lead intake, record updates and routine workflows.</p></div>
+      <div class="card"><div class="icon">🔗</div><h3>n8n, Zapier &amp; Zoho Flow Automation</h3><p>Cross-app workflows that connect Zoho with email, forms, spreadsheets, chat and third-party APIs, with no manual copy-paste.</p></div>
+      <div class="card"><div class="icon">🧠</div><h3>AI-Powered Builds</h3><p>Claude Code and Cowork, ChatGPT and Supabase backends used to build custom tools, dashboards, integrations and data pipelines faster.</p></div>
+      <div class="card"><div class="icon">🖥️</div><h3>Network &amp; Systems Admin</h3><p>Windows Server, Active Directory, Fortinet firewalls (SSL/IPsec VPN), LAN/WAN and IT support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="sub">Tools and technologies I use in production.</p>
+    <div class="skillgroup"><h3>Zoho</h3><div class="chips">
+      <span class="chip">Zoho One</span><span class="chip">Zoho CRM Enterprise</span><span class="chip">Zoho Campaigns</span><span class="chip">Zoho Flow</span><span class="chip">Blueprint</span><span class="chip">Workflow Rules</span><span class="chip">Deluge Scripting</span><span class="chip">Custom Functions</span><span class="chip">Zoho Cliq</span><span class="chip">Zoho Calendar API</span><span class="chip">Zoho Analytics</span><span class="chip">Zoho FSM</span><span class="chip">Approval Processes</span><span class="chip">Role &amp; Profile Security</span><span class="chip">Zoho Mail</span></div></div>
+    <div class="skillgroup"><h3>Programming Languages</h3><div class="chips">
+      <span class="chip">HTML</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">Zoho CRM Deluge</span><span class="chip">Zoho CRM Client Script</span></div></div>
+    <div class="skillgroup"><h3>AI &amp; Automation Tools</h3><div class="chips">
+      <span class="chip">n8n</span><span class="chip">Supabase</span><span class="chip">JotForm</span><span class="chip">Render</span><span class="chip">cron-job.org</span><span class="chip">REST APIs &amp; Webhooks</span><span class="chip">OAuth2</span><span class="chip">Claude Code</span><span class="chip">Claude Cowork</span><span class="chip">Google Gemini</span><span class="chip">Google AI Studio</span><span class="chip">AI Agents (LangChain)</span><span class="chip">ChatGPT</span><span class="chip">Zapier</span><span class="chip">Zoho Flow</span></div></div>
+    <div class="skillgroup"><h3>IT &amp; Infrastructure</h3><div class="chips">
+      <span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">Fortinet / Fortigate</span><span class="chip">SSL &amp; IPsec VPN</span><span class="chip">Cisco Switching</span><span class="chip">LAN / WAN</span><span class="chip">Hikvision</span><span class="chip">Avaya Voice</span><span class="chip">IT Support</span></div></div>
+    <div class="skillgroup"><h3>Other</h3><div class="chips">
+      <span class="chip">AI Automation</span><span class="chip">Video Editing (CapCut, Alight Motion)</span><span class="chip">AI Content Tools</span></div></div>
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="wrap">
+    <h2>Projects &amp; Proof</h2>
+    <p class="sub">Real work from a live Zoho CRM Enterprise org, captured directly from CRM Setup. Personal names are redacted. Click any screenshot to zoom.</p>
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-p="p1">Trip Ticket Automation</button>
+      <button class="tab" data-p="p6">Automation &amp; Approvals</button>
+      <button class="tab" data-p="p2">Sales &amp; Finance</button>
+      <button class="tab" data-p="p3">Ticketing System</button>
+      <button class="tab" data-p="p5">n8n Lead Intake → Zoho CRM</button>
+      <button class="tab" data-p="p4">Network / Active Directory</button>
+    </div>
+
+    <div class="proj on" id="p1">
+      <div class="card">
+        <h3>E-Trip Ticket: Blueprint + Cliq + Calendar</h3>
+        <p>One custom module (company vehicle/driver dispatch) combining a Blueprint, four Workflow Rules, a Deluge function and a chat-ops integration into one approval process.</p>
+        <div class="flow"><span>Trip Ticket Created</span><i>→</i><span>Admin Approval for Vehicle Booking</span><i>→</i><span>Trip Booked</span><i>→</i><span>Cliq card + Calendar event</span></div>
+        <div class="tablewrap"><table>
+          <tr><th>Workflow rule</th><th>Trigger</th><th>Action</th></tr>
+          <tr><td>Stage Restriction</td><td>Stage is "Trip Ticket Created"</td><td>Field Update</td></tr>
+          <tr><td>Automatic Date Approved</td><td>Stage is "Trip Booked" / "Created"</td><td>Stamps Date Approved / Requested</td></tr>
+          <tr><td>NOTIFICATION TRIPTICKET</td><td>Admin Approval stage, purpose not "Personal"</td><td>Zoho Cliq approval card to approvers' channel</td></tr>
+          <tr><td>Auto Create Calendar Event</td><td>Stage is "Trip Booked"</td><td>Deluge function creates Zoho Calendar event</td></tr>
+        </table></div>
+      </div>
+      <div class="shots">
+        <figure><img src="assets/img/01_blueprint_etripticket.jpg" alt="Blueprint canvas for E-Trip Ticket" loading="lazy"><figcaption>Fig. 1: Blueprint canvas, stage-gated approval flow</figcaption></figure>
+        <figure><img src="assets/img/02_workflow_rules_list.jpg" alt="Workflow rules list filtered to Trip Tickets" loading="lazy"><figcaption>Fig. 2: Workflow Rules for the Trip Tickets module</figcaption></figure>
+        <figure><img src="assets/img/03_workflow_condition.jpg" alt="Rule condition detail for the notification trigger" loading="lazy"><figcaption>Fig. 3: Condition detail for the Cliq notification trigger</figcaption></figure>
+        <figure><img src="assets/img/04_cliq_notification_action.jpg" alt="Zoho Cliq notification instant action" loading="lazy"><figcaption>Fig. 4: Instant action, Cliq notification to approvals channel</figcaption></figure>
+        <figure><img src="assets/img/05_calendar_rule_list.jpg" alt="Calendar event workflow rule in list" loading="lazy"><figcaption>Fig. 5: Auto-create calendar event rule</figcaption></figure>
+        <figure><img src="assets/img/06_calendar_rule_detail.jpg" alt="Calendar rule detail view" loading="lazy"><figcaption>Fig. 6: Calendar rule detail</figcaption></figure>
+        <figure><img src="assets/img/07_calendar_rule_function.jpg" alt="Deluge function call Create Trip Calendar Event" loading="lazy"><figcaption>Fig. 7: Instant action calling the Deluge function</figcaption></figure>
+        <figure><img src="assets/img/08_calendar_event_created.jpg" alt="Auto-created event in Zoho Calendar" loading="lazy"><figcaption>Fig. 8: Resulting event in Zoho Calendar (names redacted)</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="proj" id="p6">
+      <div class="card">
+        <h3>Automation and approval architecture across the whole org</h3>
+        <p>Beyond any single module, the org runs a layered automation stack: Workflow Rules for event-driven actions, Blueprints for stage-gated processes, and multi-level Approval Processes for anything that needs a human decision. All of it was built and is maintained in-house.</p>
+        <div class="grid g3" style="margin-top:16px">
+          <div class="card"><h3>Workflow Rules</h3><p>Rules firing across Opportunities, Sales Invoice, Sales Order, Cash Advance, Trip Tickets, Asset Management, the Ticketing System and HR records — field updates, alerts, and custom function calls.</p></div>
+          <div class="card"><h3>Blueprints</h3><p>Stage-gated processes on Leads, Companies, Tasks, Cases and Sales Order, each with entry criteria, transitions and validation at every step.</p></div>
+          <div class="card"><h3>Approval Processes</h3><p>Two-tier GM and President approvals across Purchase Requisition, Purchase Orders, Payment Request, Cash Advance, Job Orders and Opportunities — including multi-level chains such as Opportunity Level 1 and Level 2.</p></div>
+        </div>
+      </div>
+      <div class="shots">
+        <figure><img src="assets/img/crm_workflow_rules.png" alt="Zoho CRM workflow rules list showing rules across many different modules with their trigger events and action counts" loading="lazy"><figcaption>Workflow Rules across the org — each with its module, trigger event and action count.</figcaption></figure>
+        <figure><img src="assets/img/crm_blueprints_list.png" alt="Zoho CRM blueprint list filtered to all modules, showing blueprints on Leads, Companies, Tasks, Cases and Sales Order" loading="lazy"><figcaption>Blueprints across modules — the stage-gated processes behind day-to-day operations.</figcaption></figure>
+        <figure><img src="assets/img/crm_approval_processes.png" alt="Zoho CRM approval processes list showing GM and President level approvals across purchasing, payment and sales modules" loading="lazy"><figcaption>Approval Processes — GM and President tiers across purchasing, payments and sales.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="proj" id="p2">
+      <div class="grid g3">
+        <div class="card"><h3>Opportunities</h3><p>96 active fields (74 custom), 2 subforms. A full quotation/bid pipeline: Receipt of Inquiry, Pre-Bid Survey, Technical and Commercial Proposal, Solution Design, with Incoterms and payment terms.</p></div>
+        <div class="card"><h3>Order Intake</h3><p>68 fields (54 custom). Picks up a won opportunity and tracks the confirmed order: PO details, delivery dates, gross profit per business unit, and sales-credit splits.</p></div>
+        <div class="card"><h3>Sales Invoice</h3><p>38 fields (24 custom). Invoice and due dates, TIN, tax code, VAT 12%, aging and collection date: one source of truth from PO to collection.</p></div>
+      </div>
+      <p class="sub" style="margin-top:18px">Zoho Analytics dashboards on the Opportunities → Order Intake → Sales Invoice chain give management pipeline value, order GP by business unit and invoice aging without a separate BI tool.</p>
+      <div class="shots">
+        <figure><img src="assets/img/sales_opportunity_fields.png" alt="Zoho CRM setup showing the Opportunities module field listing with custom fields marked" loading="lazy"><figcaption>Opportunities in CRM Setup — the custom field set behind the quotation and bid pipeline.</figcaption></figure>
+        <figure><img src="assets/img/sales_order_intake_fields.png" alt="Order Intake module field listing showing fields assigned to the Order Intake 2026 layout" loading="lazy"><figcaption>Order Intake — fields mapped across the "Order Intake 2026" and Standard layouts.</figcaption></figure>
+        <figure><img src="assets/img/sales_invoice_fields.png" alt="Sales Invoice module field listing including Aging formula field and lookups" loading="lazy"><figcaption>Sales Invoice — including the Aging formula field driving collection reporting.</figcaption></figure>
+        <figure><img src="assets/img/crm_inventory_templates.png" alt="Zoho CRM inventory templates list showing purchase order, invoice and quotation templates" loading="lazy"><figcaption>Inventory templates — the quote-to-cash document set: quotation, purchase order and invoice.</figcaption></figure>
+        <figure><img src="assets/img/crm_email_templates.png" alt="Zoho CRM email templates list showing payment request, DR form and internal communication templates" loading="lazy"><figcaption>Email templates built for real operational forms, not marketing blasts.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="proj" id="p3">
+      <div class="card">
+        <h3>Dual-track Ticketing System</h3>
+        <p>A custom internal helpdesk module (77 fields, 64 custom) with two independent stage pipelines behind one intake form, routed by Ticket Classification, Requestor Region, Business Unit, Warranty Status and Service Level, with a post-resolution rating.</p>
+        <div class="tablewrap"><table>
+          <tr><th>Track</th><th>Stage flow</th></tr>
+          <tr><td>ECC</td><td>Open → Start and Evaluate → Service Request Accepted / Preparing Quotation → Assessment / Customer Acknowledged → Customer Acceptance → Closed</td></tr>
+          <tr><td>MIS</td><td>Open → Review Service/Asset Request → Servicing / Processing PR / PO → Acknowledging Report / Preparing Asset → Closed</td></tr>
+        </table></div>
+      </div>
+      <div class="shots">
+        <figure><img src="assets/img/ticketing_dual_stages.png" alt="Ticketing System field listing filtered to show ECC Stage and MIS Stage, two separate custom pick lists" loading="lazy"><figcaption>The dual-track design in Setup — ECC Stage and MIS Stage as two independent pipelines on one module.</figcaption></figure>
+        <figure><img src="assets/img/ticketing_routing_fields.png" alt="Ticketing System routing fields including Requestor Type, Requestor Region and Requestor Email" loading="lazy"><figcaption>Routing fields — Requestor Type, Region and related fields that decide where a ticket goes.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="proj" id="p5">
+      <div class="card">
+        <h3>Automated Lead Intake: web form → n8n → Zoho CRM</h3>
+        <p>A self-hosted automation that turns a web enquiry into a Zoho CRM Lead with no manual encoding. Built end to end on free-tier infrastructure, including the OAuth handling and the production troubleshooting.</p>
+        <div class="flow"><span>JotForm</span><i>→</i><span>n8n webhook</span><i>→</i><span>Parse &amp; filter</span><i>→</i><span>AI Agent (Gemini)</span><i>→</i><span>Token refresh</span><i>→</i><span>Zoho CRM Lead</span></div>
+        <div class="tablewrap"><table>
+          <tr><th>Layer</th><th>Tool</th><th>Role in the build</th></tr>
+          <tr><td>Form</td><td>JotForm</td><td>Intake form posts the submission to an n8n webhook.</td></tr>
+          <tr><td>Automation</td><td>n8n (Community Edition, self-hosted)</td><td>Webhook → Edit Fields → Filter → AI Agent → sub-workflow → HTTP Request.</td></tr>
+          <tr><td>AI</td><td>Google Gemini (via n8n AI Agent)</td><td>Reads the freeform enquiry and returns strict JSON: category, urgency and a one-line summary.</td></tr>
+          <tr><td>Hosting</td><td>Render (Docker <code>n8nio/n8n</code>)</td><td>Runs the n8n instance on the free tier.</td></tr>
+          <tr><td>Database</td><td>Supabase (Postgres)</td><td>Backing store for n8n, via the transaction pooler.</td></tr>
+          <tr><td>Uptime</td><td>cron-job.org</td><td>Pings the instance every 5 minutes so the free tier does not sleep.</td></tr>
+          <tr><td>CRM</td><td>Zoho CRM API v6</td><td>Creates the Lead record through an OAuth2 Self Client.</td></tr>
+        </table></div>
+      </div>
+      <div class="grid g3" style="margin-top:16px">
+        <div class="card"><h3>Least-privilege OAuth</h3><p>The token is scoped to <code>ZohoCRM.modules.leads.CREATE,READ</code> only, so even a copied workflow cannot touch another module or delete a record.</p></div>
+        <div class="card"><h3>Automatic token refresh</h3><p>Refreshing was moved out of the main flow into a dedicated "Zoho Token Refresh" sub-workflow using the refresh token grant, so the automation keeps running unattended instead of breaking when the access token expires.</p></div>
+        <div class="card"><h3>AI lead triage with Gemini</h3><p>An AI Agent node backed by Google Gemini turns a freeform enquiry into structured <code>category</code>, <code>urgency</code> and <code>summary</code> fields, which are written into the Lead's Description so sales can prioritise without reading every message. Live run: "CRM automation", urgency <strong>high</strong>.</p></div>
+        <div class="card"><h3>Real payload debugging</h3><p>JotForm delivers answers as an escaped JSON string inside <code>rawRequest</code>, so the field mapping was derived by inspecting the actual webhook payload rather than guessing at field names.</p></div>
+      </div>
+      <div class="shots">
+        <figure><img src="assets/img/n8n_workflow_canvas.png" alt="n8n workflow canvas: Webhook, Edit Fields, Filter, AI Agent with Google Gemini, token refresh sub-workflow and the Zoho CRM HTTP request" loading="lazy"><figcaption>Fig. 1: The workflow in n8n — webhook through to the Zoho CRM call, with Google Gemini attached to the AI Agent.</figcaption></figure>
+        <figure><img src="assets/img/n8n_execution_success.png" alt="n8n execution view showing the run succeeded in 28.193 seconds with every node green" loading="lazy"><figcaption>Fig. 2: A live run — succeeded in 28.193s, every node green end to end.</figcaption></figure>
+        <figure><img src="assets/img/n8n_gemini_output.png" alt="AI Agent node showing the parsed lead input, the Gemini prompt, and the returned JSON with category, urgency and summary" loading="lazy"><figcaption>Fig. 3: Gemini's structured output — category "CRM automation", urgency "high", plus a one-line summary.</figcaption></figure>
+        <figure><img src="assets/img/n8n_zoho_lead_proof.png" alt="The resulting lead record in Zoho CRM, with the AI-generated summary, category and urgency written into the Description field" loading="lazy"><figcaption>Fig. 4: The record as it lands in Zoho CRM — the AI summary, category and urgency written straight into the Description field.</figcaption></figure>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Production troubleshooting</h3>
+        <p>The free 512&nbsp;MB instance crash-looped with a JavaScript heap out-of-memory error, surfacing as a 502. Fixed by capping the Node heap with <code>NODE_OPTIONS=--max-old-space-size=460</code>. When the same failure reappeared later, the cause was that the variable had gone missing after a redeploy, so verifying it after every deploy became part of the runbook.</p>
+      </div>
+    </div>
+
+    <div class="proj" id="p4">
+      <div class="card">
+        <h3>Small-business network build &amp; Active Directory</h3>
+        <p>Full infrastructure set up solo: Fortigate firewall, Cisco switches, Active Directory, Hikvision surveillance, Avaya voice system and Microsoft File Server.</p>
+        <p style="margin-top:12px"><a class="btn p" href="assets/docs/Active-Directory-Portfolio.pdf" target="_blank" rel="noopener">Open Active Directory portfolio (PDF)</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="sub">7+ years across IT support, network and systems administration, and CRM development.</p>
+    <div class="tl">
+      <div><h3>Zoho CRM Developer &amp; Administrator</h3><small>Manufacturing company · current</small><p>Own a production Zoho CRM Enterprise org: 187 modules, 49 custom, 36 active Deluge functions, ~70 subforms across sales, procurement, field service, finance, HR, IT assets and QA.</p></div>
+      <div><h3>IT Head / Supervisor</h3><small>Network, systems and business applications</small><p>Ran company IT operations end to end; established the MIS standard process accredited under ISO 9001:2015; migrated mail to Zoho Mail with zero downtime.</p></div>
+      <div><h3>IT Support &amp; Network Administrator</h3><small>Early career</small><p>Helpdesk, network troubleshooting, Windows Server, Active Directory and Fortinet firewall administration.</p></div>
+      <div><h3>Content Creator</h3><small>Side work</small><p>YouTube automation channels using CapCut, Alight Motion, Wink and AI tools.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="alt">
+  <div class="wrap">
+    <h2>Certifications</h2>
+    <p class="sub">Credentials and training. Click a certificate to enlarge.</p>
+    <div class="grid g3" id="certgrid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Let's talk about your Zoho CRM</h2>
+    <p class="sub">Available for Zoho CRM implementation, automation audits, Blueprint/Workflow design, Deluge development and IT systems projects. Part-time and project-based freelance.</p>
+    <div class="btns">
+      <a class="btn p" href="mailto:jdglaurel@gmail.com">jdglaurel@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 Jonel Laurel. Case studies are based on a live Zoho CRM Enterprise implementation for a manufacturing company; personal names redacted.</div></footer>
+
+<div id="lb"><img alt="Enlarged screenshot" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="><p></p></div>
+
+<script>
+/* CERTIFICATIONS: add a file to assets/certs/ and one line here.
+   { title:"Certificate name", issuer:"Issuer", year:"2025", img:"assets/certs/file.jpg" } */
+var CERTS = [];
+
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  // mobile menu
+  $('#burger').onclick=function(){$('#links').classList.toggle('open')};
+  $$('#links a').forEach(function(a){a.onclick=function(){$('#links').classList.remove('open')}});
+  // project tabs
+  $$('.tab').forEach(function(t){t.onclick=function(){
+    $$('.tab').forEach(function(x){x.classList.remove('on')});$$('.proj').forEach(function(x){x.classList.remove('on')});
+    t.classList.add('on');$('#'+t.dataset.p).classList.add('on');};});
+  // lightbox
+  var lb=$('#lb');
+  function open(src,cap){lb.querySelector('img').src=src;lb.querySelector('img').alt=cap||'';lb.querySelector('p').textContent=cap||'';lb.classList.add('open')}
+  lb.onclick=function(){lb.classList.remove('open')};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+  document.addEventListener('click',function(e){var i=e.target;
+    if(i.tagName==='IMG'&&(i.closest('figure')||i.closest('.cert'))){var f=i.closest('figure');open(i.src,f?f.querySelector('figcaption').textContent:i.alt)}});
+  // certs
+  var g=$('#certgrid');
+  if(!CERTS.length){
+    g.style.display='block';
+    g.innerHTML='<div class="empty">Certificates are being added. Available on request.</div>';
+  }else{
+    g.innerHTML=CERTS.map(function(c){return '<div class="card cert"><img src="'+c.img+'" alt="'+c.title+' certificate" loading="lazy"><div><h3>'+c.title+'</h3><p>'+c.issuer+' · '+c.year+'</p></div></div>'}).join('');
+  }
+  // active menu link on scroll
+  var links=$$('#links a'), secs=links.map(function(a){return $(a.getAttribute('href'))});
+  window.addEventListener('scroll',function(){var y=window.scrollY+120,cur=-1;
+    secs.forEach(function(s,i){if(s.offsetTop<=y)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('active',i===cur)})},{passive:true});
+})();
+</script>
+</body>
+</html>
