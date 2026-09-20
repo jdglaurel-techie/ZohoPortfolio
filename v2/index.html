@@ -113,8 +113,23 @@
   /* lightbox */
   #lb{position:fixed;inset:0;background:rgba(15,23,42,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;cursor:zoom-out;flex-direction:column;gap:12px}
   #lb.open{display:flex}
-  #lb img{max-width:96vw;max-height:84vh;border-radius:8px;background:#fff}
-  #lb p{color:#E5E9F0;margin:0;font-size:14px;text-align:center}
+  #lb img{max-width:82vw;max-height:82vh;border-radius:8px;background:#fff}
+  #lb p{color:#E5E9F0;margin:0;font-size:14px;text-align:center;max-width:82vw}
+  #lb-count{display:block;color:#9AA7BC;font-size:13px;margin-top:6px}
+  #lb-prev,#lb-next{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;
+    font-size:30px;line-height:1;width:52px;height:52px;border-radius:50%;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:background .15s;padding-bottom:4px;
+  }
+  #lb-prev:hover,#lb-next:hover{background:rgba(255,255,255,.28)}
+  #lb-prev{left:22px} #lb-next{right:22px}
+  @media (max-width:600px){
+    #lb-prev,#lb-next{width:44px;height:44px;font-size:26px}
+    #lb-prev{left:8px} #lb-next{right:8px}
+    #lb img{max-width:96vw}
+  }
 
   #contact{background:var(--navy);color:#fff;border:0}
   #contact h2{color:#fff}
@@ -397,7 +412,12 @@
 
 <footer><div class="wrap">© 2026 Jonel Laurel. Case studies are based on a live Zoho CRM Enterprise implementation for a manufacturing company; personal names redacted.</div></footer>
 
-<div id="lb"><img alt="Enlarged screenshot" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="><p></p></div>
+<div id="lb">
+  <button id="lb-prev" aria-label="Previous image">&#8249;</button>
+  <img alt="Enlarged screenshot" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+  <button id="lb-next" aria-label="Next image">&#8250;</button>
+  <p><span id="lb-cap"></span><span id="lb-count"></span></p>
+</div>
 
 <script>
 /* CERTIFICATIONS: add a file to assets/certs/ and one line here.
@@ -413,13 +433,53 @@ var CERTS = [];
   $$('.tab').forEach(function(t){t.onclick=function(){
     $$('.tab').forEach(function(x){x.classList.remove('on')});$$('.proj').forEach(function(x){x.classList.remove('on')});
     t.classList.add('on');$('#'+t.dataset.p).classList.add('on');};});
-  // lightbox
-  var lb=$('#lb');
-  function open(src,cap){lb.querySelector('img').src=src;lb.querySelector('img').alt=cap||'';lb.querySelector('p').textContent=cap||'';lb.classList.add('open')}
-  lb.onclick=function(){lb.classList.remove('open')};
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+  // lightbox with prev/next through the gallery the image belongs to
+  var lb=$('#lb'), lbImg=lb.querySelector('img'), lbCap=$('#lb-cap'), lbCount=$('#lb-count');
+  var group=[], idx=0;
+
+  function capOf(el){var f=el.closest('figure');
+    if(f&&f.querySelector('figcaption'))return f.querySelector('figcaption').textContent.trim();
+    return el.alt||''}
+
+  function show(i){
+    if(!group.length)return;
+    idx=(i+group.length)%group.length;              // wraps around both ways
+    var el=group[idx];
+    lbImg.src=el.currentSrc||el.src; lbImg.alt=capOf(el);
+    lbCap.textContent=capOf(el);
+    lbCount.textContent=group.length>1?(idx+1)+' of '+group.length:'';
+    var show2=group.length>1?'flex':'none';
+    $('#lb-prev').style.display=show2; $('#lb-next').style.display=show2;
+  }
+  function openFrom(el){
+    // siblings = images in the same gallery container, else just this one
+    var box=el.closest('.shots')||el.closest('#certgrid');
+    group=box?[].slice.call(box.querySelectorAll('img')):[el];
+    show(group.indexOf(el));
+    lb.classList.add('open');
+  }
+  function close(){lb.classList.remove('open')}
+
+  $('#lb-prev').onclick=function(e){e.stopPropagation();show(idx-1)};
+  $('#lb-next').onclick=function(e){e.stopPropagation();show(idx+1)};
+  lbImg.onclick=function(e){e.stopPropagation()};
+  lb.onclick=close;
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowRight')show(idx+1);
+    else if(e.key==='ArrowLeft')show(idx-1);
+  });
+  // swipe on touch devices
+  var tx=null;
+  lb.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(tx===null)return; var dx=e.changedTouches[0].clientX-tx; tx=null;
+    if(Math.abs(dx)>45)show(idx+(dx<0?1:-1));
+  },{passive:true});
+
   document.addEventListener('click',function(e){var i=e.target;
-    if(i.tagName==='IMG'&&(i.closest('figure')||i.closest('.cert'))){var f=i.closest('figure');open(i.src,f?f.querySelector('figcaption').textContent:i.alt)}});
+    if(i.tagName==='IMG'&&(i.closest('figure')||i.closest('.cert')))openFrom(i)});
   // certs
   var g=$('#certgrid');
   if(!CERTS.length){
